@@ -5,7 +5,7 @@ typedef int bool;
 #define true 1
 #define false 0
 
-int distinct(char* str){
+int distinct(char str[]){
     int count = 0;
 
     for(int i = 0; i < strlen(str); i++){
@@ -13,7 +13,7 @@ int distinct(char* str){
 
         for(int j = 0; j < i; j++){
             //printf("j : %d", j);
-            if(*(str+i) == *(str+j)){
+            if(str[i] == str[j]){
                 appears = true;
                 break;
             }
@@ -31,8 +31,13 @@ int main(){
     scanf("%d", &N);
 
     char notes[N];
-    scanf("%s", notes);
-
+    if(N > 0)
+        scanf("%s", notes);
+    else
+        {
+            printf("0");
+            return 0;
+        }
     int num = distinct(notes);
     printf("%d", num);
     return 0;

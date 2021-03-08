@@ -98,7 +98,7 @@ void sumManhattanDist(float P[][2], int numPoints)
         {
             P[i][0]=PositiveX[i][0];
             P[i][1]=PositiveX[i][1];
-            P[i][2]=PositiveX[i][2];
+            //P[i][2]=PositiveX[i][2];
         }
         for ( int i = ctrPlus; i < numPoints; i++)
         {
