@@ -3,7 +3,7 @@
 #include <math.h>
 
 
-void calcMinMax_andTheirFreq(int A[], int n, int* val,int* val0,  int* freq, int* freq0)
+void calcMinMax_andTheirFreq(long int A[], int n, long int* val,long int* val0,  long int* freq, long int* freq0)
 {
     *val = A[0];
     *val0 = A[0];
@@ -37,18 +37,18 @@ void calcMinMax_andTheirFreq(int A[], int n, int* val,int* val0,  int* freq, int
 
 int main(int argc, char const *argv[])
 {
-    int n, max, maxFreq, min, minFreq;
-    scanf("%d", &n);
-    int A[n];
+    long int n, max, maxFreq, min, minFreq;
+    scanf("%ld", &n);
+    long int A[n];
     for (int i = 0; i < n; i++)
     {
-        scanf("%d", &A[i]);
+        scanf("%ld", &A[i]);
         //printf("%d ", A[i]);
     }
 
     calcMinMax_andTheirFreq(A, n, &min, &max, &minFreq, &maxFreq);
-    printf("%d", (max - min));
-    printf(" %d", maxFreq*minFreq);
+    printf("%ld", (max - min));
+    printf(" %lld", (long long int)(maxFreq*minFreq));
 
     return 0;
 }
