@@ -74,7 +74,7 @@ void balance_heaps(int min_heap[], int max_heap[], int *min_heap_size, int *max_
         int temp = min_heap[0];
         min_heap[0] = min_heap[(*min_heap_size) - 1];
         min_heap[(*min_heap_size) - 1] = temp;
-        min_Heapify_UpDown(min_heap, 0, *min_heap_size);
+        for (int i = (int)((*min_heap_size) / 2); i >= 0; --i) min_Heapify_UpDown(min_heap, i, *min_heap_size);
 
         max_heap[0] = max_heap[(*max_heap_size)-1];
         (*max_heap_size)--;
@@ -90,7 +90,7 @@ void balance_heaps(int min_heap[], int max_heap[], int *min_heap_size, int *max_
         int temp = max_heap[0];
         max_heap[0] = max_heap[(*max_heap_size) - 1];
         max_heap[(*max_heap_size) - 1] = temp;
-        max_Heapify_UpDown(max_heap, 0, *max_heap_size);
+        for (int i = (int)((*max_heap_size) / 2); i >= 0; --i) max_Heapify_UpDown(max_heap, i, *max_heap_size);
 
         min_heap[0] = min_heap[(*min_heap_size)-1];
         (*min_heap_size)--;
