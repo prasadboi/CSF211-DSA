@@ -41,9 +41,9 @@ int deleteElement(int A[], int index , int n)
     return n-1;
 }
 
-int sumArray(int A[], int n)
+long int sumArray(int A[], int n)
 {
-    int sum = 0;
+    long int sum = 0;
     for (int i = 0; i < n; i++)
     {
         sum += A[i];
@@ -98,7 +98,7 @@ int main(int argc, char const *argv[])
             len = deleteElement(temp, maxArray(temp, len), len);
             //printArray(temp, len);
         }
-        printf("%d\n", sumArray(temp, len));
+        printf("%ld\n", sumArray(temp, len));
     }
     
     return 0;

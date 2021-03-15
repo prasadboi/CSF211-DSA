@@ -1,9 +1,18 @@
 #include <stdio.h>
-#include <math.h>
+//#include <math.h>
 
 // create a heap having all the differences. Pop out the root k times
 // and replace it with diff/2 . now run max heapify
 // finally after operation simply pop out the root of the max diff heap
+
+// ceil function
+long long int Ceil(double A)
+{
+    if((A - (int)(A)) > 0)
+        return ((int)(A) + 1);
+    else
+        return A;
+}
 
 void max_Heapify(long long int arr[], int i, int heap_size)
 {
@@ -48,7 +57,7 @@ int main(int argc, char const *argv[])
     build_Max_Heap(A_diff, N-1);
     for (int i = 0; i < k; i++)
     {
-        A_diff[i] = (int)(ceil(A_diff[i]/2));
+        A_diff[i] = (long long int)(Ceil(A_diff[i]/2));
         A_diff[i] = A_diff[N-2];
         max_Heapify(A_diff, 0, N-1);
     }

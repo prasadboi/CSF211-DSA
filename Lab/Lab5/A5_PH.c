@@ -3,10 +3,8 @@
 // https://stephenjoel2k.medium.com/two-heaps-min-heap-max-heap-c3d32cbb671d
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
 
-void print_heap(int heap[], int heap_size)
+/*void print_heap(int heap[], int heap_size)
 {
     for (int i = 0; i < heap_size; i++)
     {
@@ -14,7 +12,7 @@ void print_heap(int heap[], int heap_size)
     }
     printf("\n");
     
-}
+}*/
 
 // Max_heap
 // maxHeapify------------------------------------------------------------------
@@ -67,13 +65,13 @@ void balance_heaps(int min_heap[], int max_heap[], int *min_heap_size, int *max_
 {
     if(*max_heap_size > (*min_heap_size) + 1)
     {
-        printf("max heap size > min heap size + 1\n");
+        //printf("max heap size > min heap size + 1\n");
         min_heap[*min_heap_size] = max_heap[0];
         (*min_heap_size)++;
 
-        int temp = min_heap[0];
+        /*int temp = min_heap[0];
         min_heap[0] = min_heap[(*min_heap_size) - 1];
-        min_heap[(*min_heap_size) - 1] = temp;
+        min_heap[(*min_heap_size) - 1] = temp;*/
         for (int i = (int)((*min_heap_size) / 2); i >= 0; --i) min_Heapify_UpDown(min_heap, i, *min_heap_size);
 
         max_heap[0] = max_heap[(*max_heap_size)-1];
@@ -83,13 +81,13 @@ void balance_heaps(int min_heap[], int max_heap[], int *min_heap_size, int *max_
 
     else if(*max_heap_size < *min_heap_size)
     {
-        printf("min heap size > max heap size\n");
+        //printf("min heap size > max heap size\n");
         max_heap[*max_heap_size] = min_heap[0];
         (*max_heap_size)++;
        
-        int temp = max_heap[0];
+        /*int temp = max_heap[0];
         max_heap[0] = max_heap[(*max_heap_size) - 1];
-        max_heap[(*max_heap_size) - 1] = temp;
+        max_heap[(*max_heap_size) - 1] = temp;*/
         for (int i = (int)((*max_heap_size) / 2); i >= 0; --i) max_Heapify_UpDown(max_heap, i, *max_heap_size);
 
         min_heap[0] = min_heap[(*min_heap_size)-1];
@@ -100,39 +98,40 @@ void balance_heaps(int min_heap[], int max_heap[], int *min_heap_size, int *max_
 
 void insert(int min_heap[], int max_heap[], int *min_heap_size, int *max_heap_size, int num)
 {
-    printf("num is %d \n", num);
+    //printf("num is %d \n", num);
     if(*max_heap_size == 0 || num < max_heap[0])
     {
-        printf("num < max heap root\n");
+        //printf("num < max heap root\n");
         max_heap[*max_heap_size] = num;
         (*max_heap_size)++;
 
-        int temp = max_heap[0];
+        /*int temp = max_heap[0];
         max_heap[0] = max_heap[(*max_heap_size) - 1];
-        max_heap[(*max_heap_size) - 1] = temp;
-        max_Heapify_UpDown(max_heap, 0, *max_heap_size);
+        max_heap[(*max_heap_size) - 1] = temp;*/
+        for (int i = (int)((*max_heap_size) / 2); i >= 0; --i) max_Heapify_UpDown(max_heap, 0, *max_heap_size);
     }
     else
     {
-        printf("num > max heap root\n");
+        //printf("num > max heap root\n");
         min_heap[*min_heap_size] = num;
         (*min_heap_size)++;
-        int temp = min_heap[0];
+
+        /*int temp = min_heap[0];
         min_heap[0] = min_heap[(*min_heap_size) - 1];
-        min_heap[(*min_heap_size) - 1] = temp;
-        min_Heapify_UpDown(min_heap, 0, *min_heap_size);
+        min_heap[(*min_heap_size) - 1] = temp;*/
+        for (int i = (int)((*max_heap_size) / 2); i >= 0; --i) min_Heapify_UpDown(min_heap, 0, *min_heap_size);
     }
 
 
-    printf("max heap size : %d\n", *max_heap_size);
+    /*printf("max heap size : %d\n", *max_heap_size);
     print_heap(max_heap, *max_heap_size);
     printf("min heap size: %d \n", *min_heap_size);
-    print_heap(min_heap, *min_heap_size);
+    print_heap(min_heap, *min_heap_size);*/
     balance_heaps(min_heap, max_heap, min_heap_size, max_heap_size);
-    printf("max heap size : %d \n", *max_heap_size);
+    /*printf("max heap size : %d \n", *max_heap_size);
     print_heap(max_heap, *max_heap_size);
     printf("min heap size: %d \n", *min_heap_size);
-    print_heap(min_heap, *min_heap_size);
+    print_heap(min_heap, *min_heap_size);*/
 }
 
 float median(int min_heap[], int max_heap[], int *min_heap_size, int *max_heap_size)
@@ -162,9 +161,9 @@ int main(int argc, char const *argv[])
     for (int i = 0; i < N; i++)
     {
         scanf("%d", &arr[i]);
-        printf("arr[i] : %d \n", arr[i]);
+        //printf("arr[i] : %d \n", arr[i]);
         insert(min_heap, max_heap, &min_heap_size, &max_heap_size, arr[i]);
-        printf(" || median : %f \n", median(min_heap, max_heap, &min_heap_size, &max_heap_size));
+        printf("%ld ", (long int)median(min_heap, max_heap, &min_heap_size, &max_heap_size));
     }
     return 0;
 }

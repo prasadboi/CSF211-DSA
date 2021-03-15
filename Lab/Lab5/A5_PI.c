@@ -46,7 +46,7 @@ void howManyChocolates(int heap[], int heap_size, int num_days)
     {
         total_choc += insert_Rootby3_intoMaxHeap_andRetRoot(heap, &heap_size);
     }
-    printf("max total number of chocolates that can be eaten : %lld \n", total_choc);
+    printf("%lld\n", total_choc);
 }
 
 void scanArray(int arr[], int n)
