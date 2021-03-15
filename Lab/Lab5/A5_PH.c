@@ -108,7 +108,7 @@ void insert(int min_heap[], int max_heap[], int *min_heap_size, int *max_heap_si
         /*int temp = max_heap[0];
         max_heap[0] = max_heap[(*max_heap_size) - 1];
         max_heap[(*max_heap_size) - 1] = temp;*/
-        for (int i = (int)((*max_heap_size) / 2); i >= 0; --i) max_Heapify_UpDown(max_heap, 0, *max_heap_size);
+        for (int i = (int)((*max_heap_size) / 2); i >= 0; --i) max_Heapify_UpDown(max_heap, i, *max_heap_size);
     }
     else
     {
@@ -119,7 +119,7 @@ void insert(int min_heap[], int max_heap[], int *min_heap_size, int *max_heap_si
         /*int temp = min_heap[0];
         min_heap[0] = min_heap[(*min_heap_size) - 1];
         min_heap[(*min_heap_size) - 1] = temp;*/
-        for (int i = (int)((*max_heap_size) / 2); i >= 0; --i) min_Heapify_UpDown(min_heap, 0, *min_heap_size);
+        for (int i = (int)((*max_heap_size) / 2); i >= 0; --i) min_Heapify_UpDown(min_heap, i, *min_heap_size);
     }
 
 
