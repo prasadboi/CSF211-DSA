@@ -43,22 +43,33 @@ void adjacency_mat(int adj_mat[vert][vert])
     
 }*/
 
-void DFS(int adj_mat[vert][vert], int i)
+void DFS(int adj_mat[vert][vert], int i,int done)
 {
     visited[i] = 1;
     //dfs_ctr++;
     printf("%d ",i+1);
-    for (int j = 0; j < vert; j++)
+    int min=vert+1;
+    for(int k=0;k<vert;k++)
     {
-        if(adj_mat[i][j] == 1)
-        {
-            if (visited[j] == 0)
+    	if(visited[k]==1)
+    	{
+    	for (int j = 0; j < vert; j++)
+    	{
+            if(adj_mat[k][j] == 1 && j<min && visited[j]==0)
             {
-                DFS(adj_mat, j);
-            }       
-        }
+            	    //if (visited[j] == 0)
+            	    //{
+                	//DFS(adj_mat, j);
+            	    //}       
+                min=j;
+            }
+    	}
+    	}
     }
-}
+    done++;
+    if(done<=vert)
+    DFS(adj_mat,min,done);
+}    
 
 int main(int argc, char const *argv[])
 {
@@ -72,7 +83,7 @@ int main(int argc, char const *argv[])
     
     adjacency_mat(adj_mat);
     //printMat(vert, adj_mat);
-    DFS(adj_mat, 0);
+    DFS(adj_mat, 0,1);
     
     return 0;
 }
