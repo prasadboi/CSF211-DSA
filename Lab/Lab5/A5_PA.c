@@ -6,24 +6,23 @@ struct node
     int priority;
     int real_loc;
 };
-
-// copy function to copy elemnts of struct node
-struct node COPY(struct node b)
-{
-    struct node temp;
-    temp.priority = b.priority;
-    temp.real_loc = b.real_loc;
-    temp.val = b.val;
-    return temp;
-}
-
 // swap two heap element values
 void SWAP(struct node *a, struct node *b)
 {
     struct node temp;
-    temp = COPY(*a);
-    *a = COPY(*b);
-    *b = COPY(temp);
+
+    temp.priority = (*a).priority;
+    temp.real_loc = (*a).real_loc;
+    temp.val = (*a).val;
+
+    (*a).priority = (*b).priority;
+    (*a).real_loc = (*b).real_loc;
+    (*a).val = (*b).val;
+
+
+    (*b).priority = temp.priority;
+    (*b).real_loc = temp.real_loc;
+    (*b).val = temp.val;
 }
 
 // helper function to print the heap
@@ -107,7 +106,7 @@ int main(int argc, char const *argv[])
     //printHeap(heap, N);
 
     // extracting the minimum element of the heap k times
-    for (size_t i = 0; i < k; i++)
+    for (size_t i = 0; i < k-1; i++)
     {
         if(heap_size == 1)
         {
@@ -115,13 +114,38 @@ int main(int argc, char const *argv[])
             break;
         }
 
-        struct node min = heap[0];
+        struct node min;
+        min.priority  = heap[0].priority;
+        min.real_loc = heap[0].real_loc;
+        min.val = heap[0].val;
+
+
         printf("%d ", min.real_loc);
-        heap[0] = COPY(heap[heap_size-1]);
+        heap[0].priority = heap[heap_size-1].priority;
+        heap[0].real_loc = heap[heap_size-1].real_loc;
+        heap[0].val = heap[heap_size-1].val;
         heap_size--;
         minHeapify(heap, 0, heap_size);
     }
     
+    if(heap_size == 1)
+        {
+            printf("%d ", heap[0].real_loc);
+        }
 
+        else{
+            struct node min;
+        min.priority  = heap[0].priority;
+        min.real_loc = heap[0].real_loc;
+        min.val = heap[0].val;
+
+
+        printf("%d", min.real_loc);
+        heap[0].priority = heap[heap_size-1].priority;
+        heap[0].real_loc = heap[heap_size-1].real_loc;
+        heap[0].val = heap[heap_size-1].val;
+        heap_size--;
+        minHeapify(heap, 0, heap_size);
+        }
     return 0;
 }
