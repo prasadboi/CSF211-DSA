@@ -39,7 +39,7 @@ void push(struct node** top, int data, int index)
     struct node* newNode = createNode(data, index);
     newNode->next = (*top);
     (*top) = newNode;
-    //printf("pushed value : %d to the stack at location : %d\n", (*top)->val, (*top)->pos);
+    printf("pushed value : %d to the stack at location : %d\n", (*top)->val, (*top)->pos);
     // (*head)->prev = NULL;
     //newNode->prev = (*head);
 }
@@ -173,13 +173,13 @@ int main(int argc, char const *argv[])
             }
             for (int k = 0; k < m; k++)
             {
-                reverse_arr[n-k-1] = arr[k];
+                reverse_arr[m-k-1] = arr[k];
             }
         }
-        //printf("printing forwards : \n");
-        //print_arr(arr, m);
-        //printf("printing backwards : \n");
-        //print_arr(reverse_arr, m);
+        printf("printing forwards : \n");
+        print_arr(arr, m);
+        printf("printing backwards : \n");
+        print_arr(reverse_arr, m);
         int max = find_max_rectangle(arr, reverse_arr, m);
         if(max_rectangle < max)
             max_rectangle = max;
