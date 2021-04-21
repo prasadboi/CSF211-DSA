@@ -120,7 +120,7 @@ struct node* LCA(struct node** root, ll key_1, ll key_2)
     //printf("called LCA : \n");
     struct node* iter_1 = *root;
 
-    while((iter_1 != NULL) && (iter_1!= NULL))
+    while((iter_1 != NULL))
     {
         //printf("iter val is : %lld || ", iter_1->value);
         if(iter_1->value > key_1 && iter_1->value > key_2)
