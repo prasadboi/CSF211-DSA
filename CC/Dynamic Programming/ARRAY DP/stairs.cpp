@@ -4,11 +4,6 @@
 
 using namespace std;
 
-int combinationSum(vector<int> &v, int n)
-{
-    
-}
-
 int main(int argc, char const *argv[])
 {
     int n;
