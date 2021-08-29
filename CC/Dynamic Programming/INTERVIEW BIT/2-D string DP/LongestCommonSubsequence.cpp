@@ -31,6 +31,6 @@ int LCS(string A, string B) {
 
 int main(int argc, char const *argv[])
 {
-    cout<<LCS("arjun", "prasad");
+    cout<<LCS("arjun", "a1r2j3u4n5def");
     return 0;
 }

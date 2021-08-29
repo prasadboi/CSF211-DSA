@@ -7,20 +7,20 @@ using namespace std;
 // recVisited = recursion stack 
 // visited = visited array
 
-bool findCycle(int cur, vector<vector<int>>&adj, vector<bool>&visited, vector<bool>&recVisited){
+bool findCycle(int cur, vector<vector<int>>&adj, vector<bool>&visited, vector<bool>&ancestor){
     visited[cur] = true;
-    recVisited[cur] = true;
+    ancestor[cur] = true;
     
     for(auto itr: adj[cur]){
         if(!visited[itr]){
-            if(findCycle(itr, adj, visited, recVisited))return true;
+            if(findCycle(itr, adj, visited, ancestor))return true;
         }
         // if it is visited then check in recVisited
-        else if(recVisited[itr]){
+        else if(ancestor[itr]){
             return true;
         }
     }
-    recVisited[cur] = false;
+    ancestor[cur] = false;
     return false;
 }
 
@@ -31,11 +31,11 @@ int solve(int v, vector<vector<int> > &B) {
         adj[B[i][0]].push_back(B[i][1]);
     }
     vector<bool>visited(v+1);
-    vector<bool>recVisited(v+1);
+    vector<bool>ancestor(v+1);
     
     for(int i = 1; i <= v; ++i){
         if(!visited[i]){
-            if(findCycle(i, adj, visited, recVisited)){
+            if(findCycle(i, adj, visited, ancestor)){
                 return true;
             }
         }
